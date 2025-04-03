@@ -5,11 +5,17 @@ import pandas as pd
 
 def shape_data(file):
     """
-    Reads in csv produced by webscraper and formats data for heatmap.
+    Reads in csv and formats data for heatmap.
     
-    Parameters:
+    Parameters
+    ----------
 
-    file -- The csv file to be read in
+    file: The csv file to be read in
+
+    Returns
+    ---------
+
+    Formatted dataframe
     
     """
     df = pd.read_csv(file, index_col='Episodes')  # Need to set Episodes as index for the visualisation to work
@@ -30,10 +36,16 @@ def create_heatmap(df, series_name):
     """
     Create a heatmap from a defined dataframe
 
-    Parameters:
+    Parameters
+    ----------
 
-    df -- A dataframe
-    series_name -- A constant defined in the main script
+    df: A dataframe
+    series_name: A constant defined in the main script
+
+    Returns
+    ----------
+
+    A heatmap infographic
     """
 
     print(f"Creating heatmap for series: {series_name}")
@@ -164,6 +176,15 @@ def create_heatmap(df, series_name):
     return fig
 
 def save_heatmap(fig, series_name):  
+    """
+    Saves heatmap to png
+
+    Parameters
+    ----------
+
+    fig: figure returned by create_heatmap
+    series_name: a string representing the name of the series
+    """
     print(f"Saving heatmap for series: {series_name}")
     fig.write_image(f"{series_name}_hmap.png")
 
@@ -172,10 +193,11 @@ def create_and_save_heatmap(file_path, series_name):
     """
     Creates and saves a heatmap infographic
 
-    Parameters:
+    Parameters
+    ----------
 
-    file_path -- The file path for the data to use (must be csv)
-    series_name -- The name of the series you are plotting
+    file_path: The file path for the data to use (must be csv)
+    series_name: The name of the series you are plotting
     """
     print(f"Loading data from {file_path} for series {series_name}")
 

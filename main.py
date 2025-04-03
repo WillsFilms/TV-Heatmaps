@@ -13,8 +13,6 @@ from data_load import create_and_save_heatmap
 SERIES = "Friends"
 # Update with the filepath of the csv for the heatmap
 FILE_PATH = "Data/friends.csv"
-# Update with the IMDb episode web link for the webscraper
-# WEB_LINK = "xxx"
 
 print(f"Starting analysis for {SERIES} using data from {FILE_PATH}")
 

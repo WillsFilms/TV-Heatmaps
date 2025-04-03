@@ -50,6 +50,7 @@ def create_heatmap(df, series_name):
 
     print(f"Creating heatmap for series: {series_name}")
 
+    # Calculate summary stats
     max = df.max().max()
     min = df.min().min()
     avg = round(df.mean().mean(),1)
@@ -69,6 +70,10 @@ def create_heatmap(df, series_name):
     # Remove the colorbar
     fig.update_layout(coloraxis_showscale=False)
 
+    # Define dynamic font size for x and y axes
+    x_font_size = round((23 - (len(df.columns) * (23 - 10) / 26)), 0) 
+    y_font_size = round((23 - (len(df) * (23 - 10) / 26)), 0)
+
     # Remove axis titles, add grids, set fontstyle
     fig.update_layout(
         xaxis_title="",
@@ -78,7 +83,7 @@ def create_heatmap(df, series_name):
         yaxis = dict(
             showgrid=False,
             linecolor='lightgray',
-            tickfont=dict(color='#fafafa'),
+            tickfont=dict(color='#fafafa', size=y_font_size),
             tickmode='array',  
             ticks='outside', 
             ticklen=8,  
@@ -88,7 +93,7 @@ def create_heatmap(df, series_name):
         xaxis = dict(
             showgrid=False,
             linecolor='lightgray',
-            tickfont=dict(color='#fafafa'),
+            tickfont=dict(color='#fafafa', size=x_font_size),
             tickmode='array',  
             ticks='outside', 
             ticklen=8,  

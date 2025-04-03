@@ -21,7 +21,7 @@ def shape_data(file):
     df = pd.read_csv(file, index_col='Episodes')  # Need to set Episodes as index for the visualisation to work
     print(f"Data loaded: {df.head(3)}")
     print("Checking for null values")
-    if df.iloc[:, -1].isnull().any():
+    if df.iloc[:, -1].isnull().all():
         df = df.drop(df.columns[-1], axis=1)
         print(f"NULL column dropped: \n{df.head(3)}")
     # Renaming index and columns
@@ -34,7 +34,7 @@ def shape_data(file):
 
 def create_heatmap(df, series_name):
     """
-    Create a heatmap from a defined dataframe
+    Creates a heatmap from a defined dataframe
 
     Parameters
     ----------
@@ -79,26 +79,26 @@ def create_heatmap(df, series_name):
             showgrid=False,
             linecolor='lightgray',
             tickfont=dict(color='#fafafa'),
-            tickmode='array',  # This ensures all ticks are displayed
-            ticks='outside',  # Make sure the ticks are outside for better readability
-            ticklen=8,  # Optional: controls the length of the ticks
-            tickcolor='#44546A',  # Color of ticks
-            tickprefix='    ',  # Add space before labels to create padding
+            tickmode='array',  
+            ticks='outside', 
+            ticklen=8,  
+            tickcolor='#44546A',  
+            tickprefix='    ',  
         ),
         xaxis = dict(
             showgrid=False,
             linecolor='lightgray',
             tickfont=dict(color='#fafafa'),
-            tickmode='array',  # Add ticks to provide padding
+            tickmode='array',  
             ticks='outside', 
-            ticklen=8,  # Optional: controls the length of the ticks
-            tickcolor='#44546A',  # Hide ticks
+            ticklen=8,  
+            tickcolor='#44546A',  
         ),
     font=dict(size=20, family='Trebuchet MS'),  # General font style
         title_font=dict(
             family="Trebuchet MS",  # Font family for the title
             size=34,
-            color='#fafafa'         # Font size
+            color='#fafafa'         
     ),
     title_y=0.93,
     margin=dict(t=165, b=50),
@@ -110,13 +110,13 @@ def create_heatmap(df, series_name):
         annotations=[
             # Add watermark
             dict(
-                text="@WillsFilms",  # Text for watermark
-                x=len(df.columns) / 2.2,  # x-position (edit as necessary)
-                y=len(df) / 2.2,  # y-position (edit as necessary)
+                text="@WillsFilms",  
+                x=len(df.columns) / 2.2,  
+                y=len(df) / 2.2,  
                 showarrow=False,
                 font=dict(
                     size=50,
-                    color="rgba(0, 0, 0, 0.3)"  # Black with opacity (making it semi-transparent)
+                    color="rgba(0, 0, 0, 0.3)"  
                 ),
                 align="center",
                 valign="middle",
@@ -186,7 +186,7 @@ def save_heatmap(fig, series_name):
     series_name: a string representing the name of the series
     """
     print(f"Saving heatmap for series: {series_name}")
-    fig.write_image(f"{series_name}_hmap.png")
+    fig.write_image(f"hmaps/{series_name}_hmap.png")
 
 # Master function
 def create_and_save_heatmap(file_path, series_name):

@@ -19,3 +19,6 @@ The data used for input must be in a specific format for this code to work as in
 
 ## Future Plans
 I would like to develop this infographic to include a breakdown of average ratings by season to be included alongside the heatmap in a separate column. I have developed code to produce this as a bar chart but need to test and incorporate this into the main program.
+
+## Credits
+Data has been collected from the IMDb website - https://www.imdb.com/
